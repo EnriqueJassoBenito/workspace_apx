@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SITDR001Impl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SITDR001IMPL</a> &gt; <a href="index.source.html" class="el_package">com.bbva.sitd.lib.r001.impl</a> &gt; <span class="el_source">SITDR001Impl.java</span></div><h1>SITDR001Impl.java</h1><pre class="source lang-java linenums">package com.bbva.sitd.lib.r001.impl;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.bbva.sitd.dto.catalogo.EntretenimientoDTO;
+import com.bbva.sitd.dto.catalogo.pagination.PaginationInDTO;
+import com.bbva.sitd.dto.catalogo.pagination.PaginationOutDTO;
+import com.bbva.sitd.dto.catalogo.pagination.ReferencesDTO;
+import com.bbva.sitd.dto.catalogo.response.EntretenimientoListOutDTO;
+
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * The SITDR001Impl class...
+ */
+<span class="fc" id="L20">public class SITDR001Impl extends SITDR001Abstract {</span>
+
+<span class="fc" id="L22">	private static final Logger LOGGER = LoggerFactory.getLogger(SITDR001Impl.class);</span>
+	private static final String INSERT_ENTRETENIMIENTO=&quot;insert_entretenimiento&quot;;
+	private static final String SELECT_CONTENIDO = &quot;select_contenido&quot;;
+	private static final String SELECT_CONTENIDO_COUNT = &quot;select_contenido_count&quot;;
+
+
+	@Override
+	public void execute(EntretenimientoDTO entretenimiento) {
+		// TODO Auto-generated method stub
+
+<span class="fc" id="L32">		LOGGER.info(&quot;@@ Que llego de la trx: {}&quot;,entretenimiento.toString());</span>
+		
+<span class="fc" id="L34">		Map&lt;String,Object&gt; arg = new HashMap&lt;&gt;();</span>
+		
+<span class="fc" id="L36">		arg.put(&quot;inTITULO&quot;, entretenimiento.getTitulo());</span>
+<span class="fc" id="L37">		arg.put(&quot;inTIPO&quot;, entretenimiento.getTipo());</span>
+<span class="fc" id="L38">		arg.put(&quot;inGENERO&quot;, entretenimiento.getGenero());</span>
+<span class="fc" id="L39">		arg.put(&quot;inANIO_ESTRENO&quot;, entretenimiento.getAnioEstreno());</span>
+<span class="fc" id="L40">		arg.put(&quot;inDIRECTOR&quot;, entretenimiento.getDirector());</span>
+<span class="fc" id="L41">		arg.put(&quot;inDURACION_MIN&quot;, entretenimiento.getDuracionMin());</span>
+<span class="fc" id="L42">		arg.put(&quot;inPAIS_ORIGEN&quot;, entretenimiento.getPaisOrigen());</span>
+<span class="fc" id="L43">		arg.put(&quot;inCLASIFICACION&quot;, entretenimiento.getClasificacion());</span>
+<span class="fc" id="L44">		arg.put(&quot;inIDIOMA_ORIGINAL&quot;, entretenimiento.getIdiomaOriginal());</span>
+<span class="fc" id="L45">		arg.put(&quot;inPLATAFORMA&quot;, entretenimiento.getPlataforma());</span>
+<span class="fc" id="L46">		arg.put(&quot;inCALIFICACION&quot;, entretenimiento.getCalificacion());</span>
+<span class="fc" id="L47">		arg.put(&quot;inDISPONIBLE&quot;, entretenimiento.getDisponible());</span>
+<span class="fc" id="L48">		arg.put(&quot;inFECHA_REGISTRO&quot;, entretenimiento.getFechaRegistro());</span>
+				
+	   //this.addAdvice(&quot;SITD00000201&quot;);
+		
+		try {
+			
+<span class="fc" id="L54">			int response = this.jdbcUtils.update(INSERT_ENTRETENIMIENTO, arg);</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">			if(response == 1) {</span>
+<span class="nc" id="L56">				this.addAdvice(&quot;SITD00000200&quot;);</span>
+			}
+<span class="fc" id="L58">			LOGGER.info(&quot;@@@@@ response {}&quot;,response);</span>
+			
+<span class="nc" id="L60">		}catch(com.bbva.apx.exception.db.DuplicateKeyException E) {</span>
+<span class="nc" id="L61">			 this.addAdvice(&quot;SITD00000409&quot;);</span>
+<span class="nc" id="L62">			LOGGER.info(&quot;@@@@@ DuplicateKeyException&quot;);</span>
+			
+<span class="fc" id="L64">		}</span>
+		
+		
+<span class="fc" id="L67">	}</span>
+
+
+	@Override
+	public EntretenimientoListOutDTO executeListEntretenimiento(EntretenimientoDTO entretenimiento,	PaginationInDTO paginationInDto) {
+		
+<span class="nc" id="L73">        Map&lt;String,Object&gt; arg = new HashMap&lt;&gt;();</span>
+		
+<span class="nc" id="L75">		arg.put(&quot;inTITULO&quot;, entretenimiento.getTitulo());</span>
+<span class="nc" id="L76">		arg.put(&quot;inTIPO&quot;, entretenimiento.getTipo());</span>
+<span class="nc" id="L77">		arg.put(&quot;inGENERO&quot;, entretenimiento.getGenero());</span>
+<span class="nc" id="L78">		arg.put(&quot;inANIO_ESTRENO&quot;, entretenimiento.getAnioEstreno());</span>
+<span class="nc" id="L79">		arg.put(&quot;inDIRECTOR&quot;, entretenimiento.getDirector());</span>
+<span class="nc" id="L80">		arg.put(&quot;inDURACION_MIN&quot;, entretenimiento.getDuracionMin());</span>
+<span class="nc" id="L81">		arg.put(&quot;inPAIS_ORIGEN&quot;, entretenimiento.getPaisOrigen());</span>
+<span class="nc" id="L82">		arg.put(&quot;inCLASIFICACION&quot;, entretenimiento.getClasificacion());</span>
+<span class="nc" id="L83">		arg.put(&quot;inIDIOMA_ORIGINAL&quot;, entretenimiento.getIdiomaOriginal());</span>
+<span class="nc" id="L84">		arg.put(&quot;inPLATAFORMA&quot;, entretenimiento.getPlataforma());</span>
+<span class="nc" id="L85">		arg.put(&quot;inCALIFICACION&quot;, entretenimiento.getCalificacion());</span>
+<span class="nc" id="L86">		arg.put(&quot;inDISPONIBLE&quot;, entretenimiento.getDisponible());</span>
+<span class="nc" id="L87">		arg.put(&quot;inFECHA_REGISTRO&quot;, entretenimiento.getFechaRegistro());</span>
+		
+		
+<span class="nc" id="L90">		EntretenimientoListOutDTO responseListoutDTO = new EntretenimientoListOutDTO();</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">		long initialRow = (paginationInDto.getPaginationKey()==1L?paginationInDto.getPaginationKey():paginationInDto.getPageSize()*(paginationInDto.getPaginationKey()-1L)+1L);</span>
+       
+<span class="nc" id="L93">		LOGGER.info(&quot;@@@@@ Donde inicia la consulta {} &quot;,initialRow); </span>
+		
+<span class="nc" id="L95">		List&lt;Map&lt;String, Object&gt;&gt; result = this.jdbcUtils.pagingQueryForList(SELECT_CONTENIDO, (int)initialRow, (int)paginationInDto.getPageSize(), arg);</span>
+		
+<span class="nc" id="L97">		LOGGER.info(&quot;@@@@@ Resultado de la consulta {} &quot;,result.toString());</span>
+		
+<span class="nc" id="L99">		 List&lt;EntretenimientoDTO&gt; listTipoContenido = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">		for(Map&lt;String, Object&gt; row: result) {</span>
+<span class="nc" id="L101">			LOGGER.info(&quot;@@@@@ Registro ::: {} &quot;,row.toString());</span>
+<span class="nc" id="L102">			EntretenimientoDTO entretenimientoDTO = new EntretenimientoDTO();</span>
+<span class="nc" id="L103">			entretenimientoDTO.setId(row.get(&quot;ID_CONTENIDO&quot;).toString());</span>
+<span class="nc" id="L104">			entretenimientoDTO.setTitulo(row.get(&quot;TITULO&quot;).toString());</span>
+<span class="nc" id="L105">			entretenimientoDTO.setTipo(row.get(&quot;TIPO&quot;).toString());</span>
+<span class="nc" id="L106">			entretenimientoDTO.setGenero(row.get(&quot;GENERO&quot;).toString());</span>
+<span class="nc" id="L107">			entretenimientoDTO.setAnioEstreno(null);</span>
+<span class="nc" id="L108">			entretenimientoDTO.setDirector(row.get(&quot;DIRECTOR&quot;).toString());</span>
+<span class="nc" id="L109">			entretenimientoDTO.setDuracionMin(null);</span>
+<span class="nc" id="L110">			entretenimientoDTO.setPaisOrigen(row.get(&quot;PAIS_ORIGEN&quot;).toString());</span>
+<span class="nc" id="L111">			entretenimientoDTO.setClasificacion(row.get(&quot;CLASIFICACION&quot;).toString());</span>
+<span class="nc" id="L112">			entretenimientoDTO.setIdiomaOriginal(row.get(&quot;IDIOMA_ORIGINAL&quot;).toString());</span>
+<span class="nc" id="L113">			entretenimientoDTO.setPlataforma(row.get(&quot;PLATAFORMA&quot;).toString());</span>
+<span class="nc" id="L114">			entretenimientoDTO.setCalificacion(null);</span>
+<span class="nc" id="L115">			entretenimientoDTO.setDisponible(row.get(&quot;DISPONIBLE&quot;).toString());</span>
+			//entretenimientoDTO.setFechaRegistro();
+			
+<span class="nc" id="L118">			listTipoContenido.add(entretenimiento);</span>
+<span class="nc" id="L119">		}</span>
+		
+                //SITDR001(libreria orquestadora0)--&gt; AMAZR001 ---&gt;AMAZR002---&gt;
+		
+<span class="nc" id="L123">		int totalREgistros = this.jdbcUtils.queryForInt(SELECT_CONTENIDO_COUNT, arg);</span>
+		
+<span class="nc" id="L125">		LOGGER.info(&quot;@@@@@ Cuantos registros son {} &quot;,totalREgistros);</span>
+		
+		
+		//Seteando respuesta
+<span class="nc" id="L129">		responseListoutDTO.setTipoContenido(listTipoContenido);</span>
+		
+		//armar la paginación
+<span class="nc" id="L132">		PaginationOutDTO paginationOut = new PaginationOutDTO();</span>
+<span class="nc" id="L133">		paginationOut.setPage(1L);</span>
+<span class="nc" id="L134">		paginationOut.setPageSize(10L);</span>
+<span class="nc" id="L135">		paginationOut.setTotalElements(10L);</span>
+<span class="nc" id="L136">		paginationOut.setTotalPages(10L);</span>
+		
+<span class="nc" id="L138">		ReferencesDTO referencesDTO = new ReferencesDTO();</span>
+<span class="nc" id="L139">		referencesDTO.setLastPage(&quot;100&quot;);</span>
+<span class="nc" id="L140">		referencesDTO.setNextPage(&quot;2&quot;);</span>
+<span class="nc" id="L141">		referencesDTO.setPreviousPage(&quot;1&quot;);</span>
+<span class="nc" id="L142">		paginationOut.setReferences(referencesDTO);</span>
+		
+<span class="nc" id="L144">		responseListoutDTO.setPaginationOut(paginationOut);</span>
+	 
+<span class="nc" id="L146">		return responseListoutDTO;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

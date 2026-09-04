@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1788478419432
+Build-Jdk: 1.8.0_181
+Built-By: enriq
+Bundle-Category: library-jdbc
+Bundle-Description: pruebas
+Bundle-ManifestVersion: 2
+Bundle-Name: SITDR001IMPL
+Bundle-SymbolicName: SITDR001IMPL-0.0.0
+Bundle-Version: 0.0.0
+Created-By: Apache Maven Bundle Plugin
+Import-Package: com.bbva.apx.exception.db;version="0.0",com.bbva.elara.c
+ onfiguration.manager.application;version="0.0",com.bbva.elara.configura
+ tion.manager.application.factory;version="0.0",com.bbva.elara.library;v
+ ersion="0.0",com.bbva.elara.utility.jdbc;version="0.0",com.bbva.elara.u
+ tility.jdbc.connector.factory;version="0.0",com.bbva.sitd.dto.catalogo;
+ version="0.0",com.bbva.sitd.dto.catalogo.pagination;version="0.0",com.b
+ bva.sitd.dto.catalogo.response;version="0.0",com.bbva.sitd.lib.r001;ver
+ sion="0.0",org.slf4j;version="0.0",com.bbva.elara.aspect;version="0.0",
+ org.aopalliance.aop;version="0.0",org.osgi.framework;version="0.0",org.
+ springframework.aop;version="0.0",org.springframework.aop.framework;ver
+ sion="0.0",spring;version="0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.0.0.201805111645
