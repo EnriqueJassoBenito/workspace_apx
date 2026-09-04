@@ -1,0 +1,30 @@
+{
+    "uuaa": "SITD",
+    "type": "online",
+    "content": [
+        {
+            "key": "database.db1.credentialPrefix",
+            "family": "Base de Datos",
+            "value": "database1",
+            "action": "C"
+        },
+        {
+            "key": "database.db1.driverClassName",
+            "family": "Base de Datos",
+            "value": "oracle.jdbc.driver.OracleDriver",
+            "action": "C"
+        },
+        {
+            "key": "database.db1.jndi.url",
+            "family": "Base de Datos",
+            "value": "java:/jdbc/ORA_BMAPXSDI01",
+            "action": "C"
+        },
+        {
+            "key": "database.db1.name",
+            "family": "Base de Datos",
+            "value": "ORACLE",
+            "action": "C"
+        }
+    ]
+}

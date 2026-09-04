@@ -1,0 +1,24 @@
+[
+    {
+    "errorCode": "00000405",
+    "language": "ES",
+    "description": "SIN RESULTADOS",
+    "creationDate": "23/02/2023",
+    "productionDate": "23/02/2023",
+    "errorType": "F",
+    "appCode": "TEST",
+    "audModDate": "13/03/2017",
+    "audUser": "BATMAN"
+   },
+   {
+    "errorCode": "00000204",
+    "language": "ES",
+    "description": "EMPLEADO $115$ DADO DE ALTA CORRECTAMENTE",
+    "creationDate": "23/02/2023",
+    "productionDate": "23/02/2023",
+    "errorType": "V",
+    "appCode": "TEST",
+    "audModDate": "23/02/2023",
+    "audUser": "BATMAN"
+   }
+]

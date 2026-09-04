@@ -1,0 +1,10 @@
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+-- Crear usuario
+CREATE USER SITD IDENTIFIED BY SITD123;
+
+-- Asignar permisos básicos
+GRANT CONNECT, RESOURCE TO SITD;
+
+-- Permitir espacio en el tablespace USERS
+ALTER USER SITD QUOTA UNLIMITED ON USERS;
+

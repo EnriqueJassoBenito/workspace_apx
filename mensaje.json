@@ -1,0 +1,30 @@
+{
+    "uuaa": "TEST",
+    "type": "online",
+    "content": [
+        {
+            "key": "database.test.credentialPrefix",
+            "family": "Base de Datos",
+            "value": "database1",
+            "action": "C"
+        },
+        {
+            "key": "database.test.driverClassName",
+            "family": "Base de Datos",
+            "value": "oracle.jdbc.driver.OracleDriver",
+            "action": "C"
+        },
+        {
+            "key": "database.test.jndi.url",
+            "family": "Base de Datos",
+            "value": "java:/jdbc/ORA_BMAPXSDI01",
+            "action": "C"
+        },
+        {
+            "key": "database.test.name",
+            "family": "Base de Datos",
+            "value": "ORACLE",
+            "action": "C"
+        }
+    ]
+}
