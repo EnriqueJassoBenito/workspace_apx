@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1788478374359
+Build-Jdk: 1.8.0_181
+Built-By: enriq
+Bundle-Category: library
+Bundle-Description: pruebas
+Bundle-ManifestVersion: 2
+Bundle-Name: SITDR001
+Bundle-SymbolicName: SITDR001-0.0.0
+Bundle-Version: 0.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.bbva.sitd.lib.r001;uses:="com.bbva.sitd.dto.catalogo
+ ,com.bbva.sitd.dto.catalogo.pagination,com.bbva.sitd.dto.catalogo.respo
+ nse";version="0.0.0"
+Import-Package: com.bbva.sitd.dto.catalogo;version="0.0",com.bbva.sitd.d
+ to.catalogo.pagination;version="0.0",com.bbva.sitd.dto.catalogo.respons
+ e;version="0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.0.0.201805111645

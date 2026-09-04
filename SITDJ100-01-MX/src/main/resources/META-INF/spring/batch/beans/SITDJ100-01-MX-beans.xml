@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+    <!-- SITDJ100-01-MX-beans.xml -->
+	
+    <!-- Set to the required transaction manager -->
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+
+    <bean class="org.springframework.batch.core.scope.StepScope" />
+	
+    <bean id="jobLauncher"  class="com.bbva.elara.batch.launcher.SimpleJobLauncherBean">
+        <property name="job" ref="SITDJ100-01-MX" />
+        <property name="batchLauncher" ref="batchLauncher" />
+        <property name="defaultIncrementer" ref="defaultIncrementer" />		
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+        
+    <bean name="itemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="strict" value="false"/>
+        <property name="resource" value="file:///D:/ENTORNO_LOCAL_APX/fichtemcomp/datent/#{jobParameters['fileIn']}" />
+        <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>                
+        <property name="lineMapper">            
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">                   
+                <property name="lineTokenizer">
+                    <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names" value="TITULO,TIPO,GENERO,ANIO_ESTRENO,DIRECTOR,DURACION_MIN,PAIS_ORIGEN,CLASIFICACION,IDIOMA_ORIGINAL,PLATAFORMA,CALIFICACION,DISPONIBLE,FECHA_REGISTRO"/>
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+                <property name="fieldSetMapper">
+                    <bean class="com.bbva.sitd.batch.stepone.FileItemReader"/>
+                </property>       
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="itemProcessor" class="com.bbva.sitd.batch.stepone.RecordsItemProcessor" scope="step"></bean>
+    
+    <bean id="itemWriter" class="com.bbva.sitd.batch.stepone.RecordsItemWriter" scope="step">
+        <!-- <property name="sitdR002" ref="sitdR002"></property> -->
+    </bean>
+
+    <bean id="borrado" class="com.bbva.sitd.batch.steptwo.BorraFile" scope="step">
+        <property name="resource" value="file:///D:/ENTORNO_LOCAL_APX/fichtemcomp/datent/#{jobParameters['fileIn']}" />
+    </bean>
+	
+</beans>
