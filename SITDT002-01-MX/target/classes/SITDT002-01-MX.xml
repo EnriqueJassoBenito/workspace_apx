@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transaction xmlns="http://www.w3schools.com" transactionName="SITDT002" application="SITD" version="01" country="MX" language="ES">
+    <paramsIn>
+        <dataEntretenimientos>
+            <dto order="1" name="tipoContenido" mandatory="0" package="com.bbva.sitd.dto.catalogo.EntretenimientoDTO" artifactId="SITDC001">
+                <parameter order="1" name="titulo" mandatory="0" type="String" size="200"/>
+                <parameter order="2" name="tipo" mandatory="0" type="String" size="20"/>
+                <parameter order="3" name="genero" mandatory="0" type="String" size="100"/>
+                <parameter order="4" name="anioEstreno" mandatory="0" type="Long" size="4"/>
+                <parameter order="5" name="director" mandatory="0" type="String" size="150"/>
+                <parameter order="6" name="paisOrigen" mandatory="0" type="String" size="100"/>
+                <parameter order="7" name="clasificacion" mandatory="0" type="String" size="20"/>
+                <parameter order="8" name="idiomaOriginal" mandatory="0" type="String" size="50"/>
+                <parameter order="9" name="plataforma" mandatory="0" type="String" size="100"/>
+                <parameter order="10" name="calificacion" mandatory="0" type="Double" size="4"/>
+                <parameter order="11" name="disponible" mandatory="0" type="String" size="1"/>
+            </dto>
+            <dto order="2" name="paginationIn" mandatory="0" package="com.bbva.sitd.dto.catalogo.pagination.PaginationInDTO" artifactId="SITDC001">
+                <parameter order="1" name="pageSize" mandatory="0" type="Long" size="10"/>
+                <parameter order="2" name="paginationKey" mandatory="0" type="Long" size="10"/>
+            </dto>
+        </dataEntretenimientos>
+    </paramsIn>
+    <paramsOut>
+        <dto order="1" name="entretenimientoData" mandatory="0" package="com.bbva.sitd.dto.catalogo.response.EntretenimientoListOutDTO" artifactId="SITDC001">
+            <list order="1" name="tipoContenido" mandatory="0">
+                <dto order="1" name="Type" mandatory="0" package="com.bbva.sitd.dto.catalogo.EntretenimientoDTO" artifactId="SITDC001">
+                    <parameter order="1" name="id" mandatory="0" type="String" size="20"/>
+                    <parameter order="2" name="titulo" mandatory="0" type="String" size="200"/>
+                    <parameter order="3" name="tipo" mandatory="0" type="String" size="20"/>
+                    <parameter order="4" name="genero" mandatory="0" type="String" size="100"/>
+                    <parameter order="5" name="anioEstreno" mandatory="0" type="Long" size="4"/>
+                    <parameter order="6" name="director" mandatory="0" type="String" size="150"/>
+                    <parameter order="7" name="duracionMin" mandatory="0" type="Long" size="4"/>
+                    <parameter order="8" name="paisOrigen" mandatory="0" type="String" size="100"/>
+                    <parameter order="9" name="clasificacion" mandatory="0" type="String" size="20"/>
+                    <parameter order="10" name="idiomaOriginal" mandatory="0" type="String" size="50"/>
+                    <parameter order="11" name="plataforma" mandatory="0" type="String" size="100"/>
+                    <parameter order="12" name="calificacion" mandatory="0" type="Long" size="4"/>
+                    <parameter order="13" name="disponible" mandatory="0" type="String" size="1"/>
+                    <parameter order="14" name="fechaRegistro" mandatory="0" type="Date (YYYY-MM-DD)" size="0"/>
+                </dto>
+            </list>
+            <dto order="2" name="paginationOut" mandatory="0" package="com.bbva.sitd.dto.catalogo.pagination.PaginationOutDTO" artifactId="SITDC001">
+                <parameter order="1" name="page" mandatory="0" type="Long" size="10"/>
+                <parameter order="2" name="totalPages" mandatory="0" type="Long" size="10"/>
+                <parameter order="3" name="totalElements" mandatory="0" type="Long" size="10"/>
+                <parameter order="4" name="pageSize" mandatory="0" type="Long" size="10"/>
+                <dto order="5" name="references" mandatory="0" package="com.bbva.sitd.dto.catalogo.pagination.ReferencesDTO" artifactId="SITDC001">
+                    <parameter order="1" name="lastPage" mandatory="0" type="String" size="10"/>
+                    <parameter order="2" name="nextPage" mandatory="0" type="String" size="10"/>
+                    <parameter order="3" name="previousPage" mandatory="0" type="String" size="10"/>
+                </dto>
+            </dto>
+        </dto>
+    </paramsOut>
+    <description>Consultas paginadas del catálogo de entretenimiento</description>
+</transaction>

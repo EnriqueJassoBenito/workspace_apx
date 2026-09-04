@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SITDT00201MXTransaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SITDT002-01-MX</a> &gt; <a href="index.source.html" class="el_package">com.bbva.sitd</a> &gt; <span class="el_source">SITDT00201MXTransaction.java</span></div><h1>SITDT00201MXTransaction.java</h1><pre class="source lang-java linenums">package com.bbva.sitd;
+
+import com.bbva.elara.domain.transaction.RequestHeaderParamsName;
+import com.bbva.elara.domain.transaction.Severity;
+import com.bbva.sitd.dto.catalogo.response.EntretenimientoListOutDTO;
+import com.bbva.sitd.lib.r001.SITDR001;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Consultas paginadas del catálogo de entretenimiento
+ *
+ */
+<span class="fc" id="L14">public class SITDT00201MXTransaction extends AbstractSITDT00201MXTransaction {</span>
+
+<span class="fc" id="L16">	private static final Logger LOGGER = LoggerFactory.getLogger(SITDT00201MXTransaction.class);</span>
+
+	/**
+	 * The execute method...
+	 */
+	@Override
+	public void execute() {
+<span class="nc" id="L23">		SITDR001 sitdR001 = this.getServiceLibrary(SITDR001.class);</span>
+                
+                //No mas de 9 librerias en una transaction
+                //Transaccion solo puede hacer una operacion
+<span class="nc" id="L27">		LOGGER.info(&quot;Inicia la transacción para consultas paginadas de tipos de contenido&quot;);</span>
+				
+<span class="nc" id="L29">		LOGGER.info(&quot;Leer header AAP {} &quot;, this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.AAP));</span>
+<span class="nc" id="L30">		 LOGGER.info(&quot;Leer header GENTUSER {} &quot;, this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.AGENTUSER));</span>
+<span class="nc" id="L31">		LOGGER.info(&quot;Leer header USERCODE {} &quot;, this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.USERCODE));</span>
+		
+<span class="nc" id="L33">		LOGGER.info(&quot;Leer header {} &quot;, this.getTipocontenido().toString());</span>
+		
+		EntretenimientoListOutDTO tipoEtretenimiento;
+		
+<span class="nc" id="L37">		tipoEtretenimiento= sitdR001.executeListEntretenimiento(this.getTipocontenido(),this.getPaginationin());</span>
+		
+<span class="nc bnc" id="L39" title="All 2 branches missed.">		if(tipoEtretenimiento.getTipoContenido().isEmpty()) {</span>
+<span class="nc" id="L40">			this.setEntretenimientodata(tipoEtretenimiento);</span>
+<span class="nc" id="L41">			this.setSeverity(Severity.WARN);</span>
+<span class="nc" id="L42">			return;</span>
+		}
+	
+<span class="nc" id="L45">			this.setEntretenimientodata(tipoEtretenimiento);</span>
+<span class="nc" id="L46">			this.setSeverity(Severity.OK);</span>
+		
+<span class="nc" id="L48">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

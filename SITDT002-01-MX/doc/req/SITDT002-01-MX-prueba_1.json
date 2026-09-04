@@ -1,0 +1,26 @@
+{
+	"headers": {
+		"logical-transaction-code": "SITDT002",
+		"version-code": "01",
+		"country-code": "MX"
+	},
+	"body": {
+		"tipoContenido": {
+			"titulo": "",
+			"tipo": "",
+			"genero": "",
+			"anioEstreno": 0,
+			"director": "",
+			"paisOrigen": "",
+			"clasificacion": "",
+			"idiomaOriginal": "",
+			"plataforma": "",
+			"calificación": 0,
+			"disponible": ""
+		},
+		"paginationIn": {
+			"pageSize": 0,
+			"paginationKey": 0
+		}
+	}
+}

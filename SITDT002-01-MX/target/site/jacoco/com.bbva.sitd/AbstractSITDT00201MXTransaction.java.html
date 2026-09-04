@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractSITDT00201MXTransaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SITDT002-01-MX</a> &gt; <a href="index.source.html" class="el_package">com.bbva.sitd</a> &gt; <span class="el_source">AbstractSITDT00201MXTransaction.java</span></div><h1>AbstractSITDT00201MXTransaction.java</h1><pre class="source lang-java linenums">package com.bbva.sitd;
+
+import com.bbva.elara.transaction.AbstractTransaction;
+import com.bbva.sitd.dto.catalogo.EntretenimientoDTO;
+import com.bbva.sitd.dto.catalogo.pagination.PaginationInDTO;
+import com.bbva.sitd.dto.catalogo.response.EntretenimientoListOutDTO;
+
+/**
+ * In this class, the input and output data is defined automatically through the setters and getters.
+ */
+public abstract class AbstractSITDT00201MXTransaction extends AbstractTransaction {
+
+<span class="fc" id="L13">	public AbstractSITDT00201MXTransaction(){</span>
+<span class="fc" id="L14">	}</span>
+
+
+	/**
+	 * Return value for input parameter tipoContenido
+	 */
+	protected EntretenimientoDTO getTipocontenido(){
+<span class="nc" id="L21">		return (EntretenimientoDTO)this.getParameter(&quot;tipoContenido&quot;);</span>
+	}
+
+	/**
+	 * Return value for input parameter paginationIn
+	 */
+	protected PaginationInDTO getPaginationin(){
+<span class="nc" id="L28">		return (PaginationInDTO)this.getParameter(&quot;paginationIn&quot;);</span>
+	}
+
+	/**
+	 * Set value for EntretenimientoListOutDTO output parameter entretenimientoData
+	 */
+	protected void setEntretenimientodata(final EntretenimientoListOutDTO field){
+<span class="nc" id="L35">		this.addParameter(&quot;entretenimientoData&quot;, field);</span>
+<span class="nc" id="L36">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

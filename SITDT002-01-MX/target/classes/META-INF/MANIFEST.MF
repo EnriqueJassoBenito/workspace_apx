@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1788478454274
+Build-Jdk: 1.8.0_181
+Built-By: enriq
+Bundle-Activator: com.bbva.sitd.SITDT00201MXTransaction
+Bundle-Category: transaction
+Bundle-Description: Consultas paginadas del catálogo de entretenimiento
+Bundle-ManifestVersion: 2
+Bundle-Name: SITDT002-01-MX
+Bundle-SymbolicName: SITDT002-01-MX
+Bundle-Version: 0.0.0
+Created-By: Apache Maven Bundle Plugin
+Import-Package: com.bbva.elara.domain.transaction;version="0.0",com.bbva
+ .elara.domain.transaction.request.header;version="0.0",com.bbva.elara.t
+ ransaction;version="0.0",com.bbva.sitd.dto.catalogo;version="0.0",com.b
+ bva.sitd.dto.catalogo.pagination;version="0.0",com.bbva.sitd.dto.catalo
+ go.response;version="0.0",com.bbva.sitd.lib.r001;version="0.0",org.slf4
+ j;version="0.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.0.0.201805111645
